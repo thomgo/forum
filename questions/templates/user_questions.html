@@ -9,4 +9,10 @@
 
 {% block aside %}
   <h3>Ouvrir un sujet</h3>
+
+  <form action="" method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Submit">
+  </form>
 {% endblock%}
