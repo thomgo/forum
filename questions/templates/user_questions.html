@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <h2>Les questions que vous avez posées</h2>
+  {% for topic in topics %}
+    {{topic.title}}
+  {% endfor%}
+{% endblock %}
+
+{% block aside %}
+  <h3>Ouvrir un sujet</h3>
+{% endblock%}
