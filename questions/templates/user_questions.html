@@ -3,7 +3,22 @@
 {% block main %}
   <h2>Les questions que vous avez posées</h2>
   {% for topic in topics %}
-    {{topic.title}}
+  <div class="card my-4">
+      <div class="card-header">
+        {% if topic.is_solved %}
+            Résolu
+        {% else %}
+            Non-résolu
+        {% endif%}
+      </div>
+    <div class="card-body">
+      <h5 class="card-title">{{topic.title}}</h5>
+      <p class="card-text">{{topic.problem}}</p>
+      <div class="text-center">
+        <a href="#" class="btn btn-success">Voir le sujet</a>
+      </div>
+    </div>
+  </div>
   {% endfor%}
 {% endblock %}
 
@@ -12,7 +27,14 @@
 
   <form action="" method="post">
       {% csrf_token %}
-      {{ form }}
-      <input type="submit" value="Submit">
+      {% for field in form %}
+        <div class="form-group">
+          <label>{{ field.label }}</label>
+          {{field}}
+        </div>
+      {% endfor %}
+      <div class="text-center">
+        <input type="submit" value="Submit" class= "btn btn-success">        
+      </div>
   </form>
 {% endblock%}
