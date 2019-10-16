@@ -126,4 +126,5 @@ STATIC_URL = '/static/'
 
 # Authentification params
 
-LOGIN_REDIRECT_URL = '/questions'
+LOGIN_REDIRECT_URL = '/questions/index'
+LOGOUT_REDIRECT_URL = '/accounts/login'
