@@ -10,6 +10,7 @@
         {% else %}
             Non-résolu
         {% endif%}
+        <span class="float-right">le {{topic.opening_date|date:"d/m/y h:m"}}</span>
       </div>
     <div class="card-body">
       <h5 class="card-title">{{topic.title}}</h5>
