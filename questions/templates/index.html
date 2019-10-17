@@ -3,7 +3,23 @@
 {% block main %}
   <h2>Questions en cours</h2>
   {% for topic in topics %}
-    {{opic.title}}
+    <div class="card my-4">
+        <div class="card-header bg-dark text-white">
+          {% if topic.is_solved %}
+              Résolu
+          {% else %}
+              Non-résolu
+          {% endif%}
+          <span class="float-right">Par {{topic.author}}, le {{topic.opening_date|date:"d/m/y h:m"}}</span>
+        </div>
+      <div class="card-body">
+        <h5 class="card-title">{{topic.title}}</h5>
+        <p class="card-text">{{topic.problem}}</p>
+        <div class="text-center">
+          <a href="#" class="btn btn-dark">Voir</a>
+        </div>
+      </div>
+    </div>
   {% endfor%}
 {% endblock %}
 

@@ -8,7 +8,7 @@ from .models import Topic
 
 @login_required
 def index(request):
-    topics = Topic.objects.all()
+    topics = Topic.objects.filter(is_solved=False)
     return render(request, "index.html", {"topics": topics})
 
 @login_required
