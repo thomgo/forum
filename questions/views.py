@@ -22,7 +22,7 @@ def user_questions(request):
             topic.author = request.user
             topic.save()
     form = TopicForm()
-    topics = Topic.objects.all()
+    topics = Topic.objects.filter(author=request.user)
     return render(request, "user_questions.html", {"topics": topics, 'form': form})
 
 @login_required
