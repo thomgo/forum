@@ -25,9 +25,11 @@
 
 {% block aside %}
   <h3>Résolus</h3>
-  {% for topic in unsolved_topics %}
-    <p>
-      <a class="text-dark" href="{% url 'single' question_id=topic.id %}">{{topic.title}}</a>
-    </p>
-  {% endfor %}
+  <ul class="list-group mt-4">
+    {% for topic in unsolved_topics %}
+      <li class="list-group-item">
+        <a class="text-dark" href="{% url 'single' question_id=topic.id %}">{{topic.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock%}
