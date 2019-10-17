@@ -1,8 +1,9 @@
-from django.conf.urls import url
+from django.urls import path
 
 from . import views
 
 urlpatterns = [
-    url("index", views.index, name='index'),
-    url("user", views.user_questions, name='user_questions'),
+    path('index', views.index, name='index'),
+    path('user/delete/<int:question_id>', views.delete_question, name='delete_question'),
+    path('user', views.user_questions, name='user_questions'),
 ]

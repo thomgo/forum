@@ -24,3 +24,7 @@ def user_questions(request):
     form = TopicForm()
     topics = Topic.objects.all()
     return render(request, "user_questions.html", {"topics": topics, 'form': form})
+
+@login_required
+def delete_question(request, question_id):
+    return HttpResponse("Coucou")
