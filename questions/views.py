@@ -13,7 +13,6 @@ def index(request):
 
 @login_required
 def single(request, question_id):
-    topic = Topic.objects.get(id=question_id)
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -21,8 +20,9 @@ def single(request, question_id):
         if form.is_valid():
             message = form.save(commit=False)
             message.author = request.user
-            message.topic = topic
+            message.topic = Topic.objects.get(id=question_id)
             message.save()
+    topic = Topic.objects.prefetch_related('message_set').get(id=question_id)
     form = MessageForm()
     return render(request, "single.html", {"topic": topic, 'form': form})
 

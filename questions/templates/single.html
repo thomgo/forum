@@ -10,8 +10,13 @@
   </div>
   <h3>Réponses</h3>
 
-  {% for message in topic.messages %}
-    {{message.content}}
+  {% for message in topic.message_set.all %}
+    <div class="card my-4">
+      <div class="card-body">
+        <p class="card-text">{{message.content}}</p>
+        <span class="float-right">Par {{message.author}}, le {{message.publishing_date|date:"d/m/y h:m"}}</span>
+      </div>
+    </div>
   {% endfor %}
   <form action="" method="post">
       {% csrf_token %}
