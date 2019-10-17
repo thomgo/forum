@@ -9,7 +9,8 @@ from .models import Topic
 @login_required
 def index(request):
     topics = Topic.objects.filter(is_solved=False)
-    return render(request, "index.html", {"topics": topics})
+    unsolved_topics = Topic.objects.filter(is_solved=True)
+    return render(request, "index.html", {"topics": topics, "unsolved_topics": unsolved_topics})
 
 @login_required
 def single(request, question_id):
