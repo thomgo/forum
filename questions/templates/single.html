@@ -18,6 +18,10 @@
       </div>
     </div>
   {% endfor %}
+{% endblock %}
+
+{% block aside %}
+  <h3>Répondre</h3>
   <form action="" method="post">
       {% csrf_token %}
       {% for field in form %}
@@ -30,8 +34,4 @@
         <input type="submit" value="Répondre" class= "btn btn-success">
       </div>
   </form>
-{% endblock %}
-
-{% block aside %}
-  <h3>Résolus</h3>
 {% endblock%}
