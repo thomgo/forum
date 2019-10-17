@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
-from .forms import TopicForm
+from .forms import TopicForm, MessageForm
 
 from .models import Topic
 
@@ -14,7 +14,17 @@ def index(request):
 @login_required
 def single(request, question_id):
     topic = Topic.objects.get(id=question_id)
-    return render(request, "single.html", {"topic": topic})
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.author = request.user
+            message.topic = topic
+            message.save()
+    form = MessageForm()
+    return render(request, "single.html", {"topic": topic, 'form': form})
 
 @login_required
 def user_questions(request):
