@@ -17,7 +17,7 @@
       <p class="card-text">{{topic.problem}}</p>
       <div class="text-center">
         <a href="{% url 'delete_question' question_id=topic.id%}" class="btn btn-danger">Supprimer</a>
-        <a href="#" class="btn btn-dark">Voir</a>
+        <a href="{% url 'single' question_id=topic.id %}" class="btn btn-dark">Voir</a>
         {% if not topic.is_solved %}
           <a href="{% url 'solve_question' question_id=topic.id%}" class="btn btn-success">Résolu</a>
         {% endif %}
