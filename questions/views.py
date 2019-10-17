@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 
@@ -27,4 +27,21 @@ def user_questions(request):
 
 @login_required
 def delete_question(request, question_id):
-    return HttpResponse("Coucou")
+    try:
+        topic = Topic.objects.get(id=question_id)
+        if request.user == topic.author:
+            topic.delete()
+    except Exception as e:
+        pass
+    return redirect('user_questions')
+
+@login_required
+def solve_question(request, question_id):
+    try:
+        topic = Topic.objects.get(id=question_id)
+        if request.user == topic.author:
+            topic.is_solved = 1
+            topic.save()
+    except Exception as e:
+        pass
+    return redirect('user_questions')
