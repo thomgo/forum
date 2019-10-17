@@ -38,8 +38,13 @@ def user_questions(request):
             topic.author = request.user
             topic.save()
     form = TopicForm()
-    topics = Topic.objects.filter(author=request.user)
+    topics = Topic.objects.filter(author=request.user, is_solved=False)
     return render(request, "user_questions.html", {"topics": topics, 'form': form})
+
+@login_required
+def archives(request):
+    topics = Topic.objects.filter(author=request.user, is_solved=True)
+    return render(request, "archives.html", {"topics": topics})
 
 @login_required
 def delete_question(request, question_id):
