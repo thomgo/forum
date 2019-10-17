@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block main %}
+  <h2>{{topic.title}}</h2>
+  <div class="card my-4">
+    <div class="card-body">
+      <p class="card-text">{{topic.problem}}</p>
+      <span class="float-right">Par {{topic.author}}, le {{topic.opening_date|date:"d/m/y h:m"}}</span>
+    </div>
+  </div>
+  <h3>Réponses</h3>
+{% endblock %}
+
+{% block aside %}
+  <h3>Résolus</h3>
+{% endblock%}

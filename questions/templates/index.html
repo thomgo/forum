@@ -16,7 +16,7 @@
         <h5 class="card-title">{{topic.title}}</h5>
         <p class="card-text">{{topic.problem}}</p>
         <div class="text-center">
-          <a href="#" class="btn btn-dark">Voir</a>
+          <a href="{% url 'single' question_id=topic.id %}" class="btn btn-dark">Voir</a>
         </div>
       </div>
     </div>

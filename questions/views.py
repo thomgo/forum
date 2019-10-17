@@ -12,6 +12,11 @@ def index(request):
     return render(request, "index.html", {"topics": topics})
 
 @login_required
+def single(request, question_id):
+    topic = Topic.objects.get(id=question_id)
+    return render(request, "single.html", {"topic": topic})
+
+@login_required
 def user_questions(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
