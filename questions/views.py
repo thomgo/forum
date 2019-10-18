@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 from .forms import TopicForm, MessageForm
 
@@ -40,6 +41,13 @@ def user_questions(request):
     form = TopicForm()
     topics = Topic.objects.filter(author=request.user, is_solved=False)
     return render(request, "user_questions.html", {"topics": topics, 'form': form})
+
+@login_required
+def search(request):
+    if request.method == 'POST':
+        research = request.POST['search']
+        topics = Topic.objects.filter(Q(title__icontains=research) | Q(problem__icontains=research))
+    return render(request, "search.html", {'research': research, 'topics': topics})
 
 @login_required
 def archives(request):

@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from django.forms import ModelForm
 
 from .models import Topic, Message
@@ -21,3 +22,6 @@ class MessageForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)
         self.fields['content'].widget.attrs.update({'class': 'form-control',})
+
+# class SearchForm(forms.Form):
+#     search = forms.CharField(label='rechercher', max_length=100)
