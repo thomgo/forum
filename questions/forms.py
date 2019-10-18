@@ -12,7 +12,9 @@ class TopicForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(TopicForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update({'class': 'form-control',})
+        self.fields['title'].label = "Votre question"
         self.fields['problem'].widget.attrs.update({'class': 'form-control',})
+        self.fields['problem'].label = "Explication du problème"
 
 class MessageForm(ModelForm):
     class Meta:
@@ -22,6 +24,7 @@ class MessageForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)
         self.fields['content'].widget.attrs.update({'class': 'form-control',})
+        self.fields['content'].label = "Votre message"
 
 # class SearchForm(forms.Form):
 #     search = forms.CharField(label='rechercher', max_length=100)
