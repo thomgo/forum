@@ -16,7 +16,7 @@
         <h5 class="card-title">{{topic.title}}</h5>
         <p class="card-text">{{topic.problem}}</p>
         <div class="text-center">
-          <a href="{% url 'single' question_id=topic.id %}" class="btn btn-dark">Voir</a>
+          <a href="{% url 'single' topic_id=topic.id %}" class="btn btn-dark">Voir</a>
         </div>
       </div>
     </div>
@@ -26,9 +26,9 @@
 {% block aside %}
   <h3>Résolus</h3>
   <ul class="list-group mt-4">
-    {% for topic in unsolved_topics %}
+    {% for topic in solved_topics %}
       <li class="list-group-item">
-        <a class="text-dark" href="{% url 'single' question_id=topic.id %}">{{topic.title}}</a>
+        <a class="text-dark" href="{% url 'single' topic_id=topic.id %}">{{topic.title}}</a>
       </li>
     {% endfor %}
   </ul>
