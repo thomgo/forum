@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block main %}
-  <h2>Les questions que vous avez posées</h2>
+  <h2>Vos sujets résolus</h2>
   {% for topic in topics %}
   <div class="card my-4">
       <div class="card-header bg-dark text-white">
@@ -28,5 +28,12 @@
 {% endblock %}
 
 {% block aside %}
-  <h3>Ouvrir un sujet</h3>
+  <h3>Résolus</h3>
+  <ul class="list-group mt-4">
+    {% for topic in other_topics %}
+      <li class="list-group-item">
+        <a class="text-dark" href="{% url 'single' question_id=topic.id %}">{{topic.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock%}

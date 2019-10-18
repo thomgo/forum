@@ -44,7 +44,8 @@ def user_questions(request):
 @login_required
 def archives(request):
     topics = Topic.objects.filter(author=request.user, is_solved=True)
-    return render(request, "archives.html", {"topics": topics})
+    other_topics = Topic.objects.filter(is_solved=True).exclude(author=request.user)
+    return render(request, "archives.html", {"topics": topics, 'other_topics': other_topics})
 
 @login_required
 def delete_question(request, question_id):
