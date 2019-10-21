@@ -16,6 +16,7 @@ def index(request):
 
 @login_required
 def single(request, topic_id):
+    """View to display single topic information with messages"""
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         form = MessageForm(request.POST)
@@ -31,6 +32,7 @@ def single(request, topic_id):
 
 @login_required
 def user_questions(request):
+    """View to diplay topics created by the logged user and allow topics creation"""
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
         form = TopicForm(request.POST)
@@ -45,6 +47,7 @@ def user_questions(request):
 
 @login_required
 def search(request):
+    """View to search for a topic based on a string input"""
     if request.method == 'POST':
         research = request.POST['search']
         topics = Topic.objects.filter(Q(title__icontains=research) | Q(problem__icontains=research))
@@ -52,12 +55,14 @@ def search(request):
 
 @login_required
 def archives(request):
+    """View to display all solved topics"""
     topics = Topic.objects.filter(author=request.user, is_solved=True)
     other_topics = Topic.objects.filter(is_solved=True).exclude(author=request.user)
     return render(request, "archives.html", {"topics": topics, 'other_topics': other_topics})
 
 @login_required
 def delete_question(request, topic_id):
+    """View to delete a topic from BDD"""
     try:
         topic = Topic.objects.get(id=topic_id)
         if request.user == topic.author:
@@ -68,6 +73,7 @@ def delete_question(request, topic_id):
 
 @login_required
 def solve_question(request, topic_id):
+    """View to update a question as solved in BDD"""
     try:
         topic = Topic.objects.get(id=topic_id)
         if request.user == topic.author:
