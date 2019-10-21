@@ -129,5 +129,8 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/questions/index'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
+# Manage session parameters
+# make sur the user is disconnected when he closes the browser
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 600 
+# if no activity for 10 minutes the user is disconnected
+SESSION_COOKIE_AGE = 600
