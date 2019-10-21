@@ -13,7 +13,7 @@
         <h5 class="card-title">{{topic.title}}</h5>
         <p class="card-text">{{topic.problem}}</p>
         <div class="text-center">
-          <a href="{% url 'delete_question' topic_id=topic.id%}" class="btn btn-danger">Supprimer</a>
+          <a href="{% url 'delete_topic' topic_id=topic.id%}" class="btn btn-danger">Supprimer</a>
           <a href="{% url 'single' topic_id=topic.id %}" class="btn btn-dark">Voir</a>
         </div>
       </div>

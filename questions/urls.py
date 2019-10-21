@@ -8,6 +8,6 @@ urlpatterns = [
     path('user', views.user_questions, name='user_questions'),
     path('search', views.search, name='search'),
     path('archives', views.archives, name='archives'),
-    path('user/delete/<int:topic_id>', views.delete_question, name='delete_question'),
-    path('user/solve/<int:topic_id>', views.solve_question, name='solve_question'),
+    path('user/delete/<int:topic_id>', views.delete_topic, name='delete_topic'),
+    path('user/solve/<int:topic_id>', views.solve_topic, name='solve_topic'),
 ]

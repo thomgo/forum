@@ -17,10 +17,10 @@
         <h5 class="card-title">{{topic.title}}</h5>
         <p class="card-text">{{topic.problem}}</p>
         <div class="text-center">
-          <a href="{% url 'delete_question' topic_id=topic.id%}" class="btn btn-danger">Supprimer</a>
+          <a href="{% url 'delete_topic' topic_id=topic.id%}" class="btn btn-danger">Supprimer</a>
           <a href="{% url 'single' topic_id=topic.id %}" class="btn btn-dark">Voir</a>
           {% if not topic.is_solved %}
-            <a href="{% url 'solve_question' topic_id=topic.id%}" class="btn btn-success">Résolu</a>
+            <a href="{% url 'solve_topic' topic_id=topic.id%}" class="btn btn-success">Résolu</a>
           {% endif %}
         </div>
       </div>

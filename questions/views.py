@@ -74,7 +74,7 @@ def archives(request):
 
 @require_http_methods(["GET"])
 @login_required
-def delete_question(request, topic_id):
+def delete_topic(request, topic_id):
     """View to delete a topic from DB"""
     try:
         # make sur the id match a topic and the author is the user
@@ -87,7 +87,7 @@ def delete_question(request, topic_id):
 
 @require_http_methods(["GET"])
 @login_required
-def solve_question(request, topic_id):
+def solve_topic(request, topic_id):
     """View to update a question as solved in DB"""
     try:
         # make sur the id match a topic and the author is the user
